@@ -11,6 +11,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Formik } from 'formik';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
+import { getParamForRequest } from '../helpers/exercisesHelpers';
 import FormModalSelector from '../components/form/FormModalSelector';
 import FormSubmitButton from '../components/form/FormSubmitButton';
 
@@ -58,7 +59,12 @@ const SearchFormScreen: React.FC<ScreenProps> = ({ navigation }) => {
           validateOnMount
           onSubmit={(values) => {
             Keyboard.dismiss();
-            console.log('values', values);
+            navigation.navigate('SearchResults', {
+              type: getParamForRequest(values.type.label),
+              muscle: getParamForRequest(values.muscle.label),
+              difficulty: getParamForRequest(values.difficulty.label),
+              name: values.name,
+            })
           }}>
           {({
             handleChange,
@@ -68,7 +74,6 @@ const SearchFormScreen: React.FC<ScreenProps> = ({ navigation }) => {
             isValid,
             setFieldValue,
           }) => {
-            console.log('values', values);
             return (
               <View style={styles.formContainer}>
                 <FormModalSelector
