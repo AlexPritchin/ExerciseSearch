@@ -18,9 +18,14 @@ interface Props {
   clearOnPress?: PressableProps['onPress'];
 }
 
-const FormModalSelector: React.FC<Props> = ({ inputValue, inputPlaceholder, clearOnPress, ...rest }) => {
+const FormModalSelector: React.FC<Props> = ({
+  inputValue,
+  inputPlaceholder,
+  clearOnPress,
+  ...rest
+}) => {
   return (
-    <View style={{ width: '100%', flexDirection: 'row', marginTop: 30, gap: 10 }}>
+    <View style={styles.mainContainer}>
       <ModalSelector
         supportedOrientations={['portrait']}
         cancelText="Cancel"
@@ -28,9 +33,8 @@ const FormModalSelector: React.FC<Props> = ({ inputValue, inputPlaceholder, clea
         selectedItemTextStyle={styles.pickerSelectedItemText}
         sectionTextStyle={styles.pickerSectionText}
         optionContainerStyle={{ backgroundColor: '#fff' }}
-        cancelContainerStyle={{ backgroundColor: '#bbb', borderRadius: 4 }}
-        {...rest}
-        >
+        cancelContainerStyle={styles.pickerCancelContainer}
+        {...rest}>
         <TextInput
           value={inputValue}
           editable={false}
@@ -39,9 +43,7 @@ const FormModalSelector: React.FC<Props> = ({ inputValue, inputPlaceholder, clea
         />
       </ModalSelector>
       {inputValue && (
-        <Pressable
-          style={[styles.clearPickerPressable, { flex: 1, justifyContent: 'center', alignItems: 'center' }]}
-          onPress={clearOnPress}>
+        <Pressable style={styles.clearPickerPressable} onPress={clearOnPress}>
           <Text style={{ fontSize: 16 }}>Clear</Text>
         </Pressable>
       )}
@@ -50,6 +52,16 @@ const FormModalSelector: React.FC<Props> = ({ inputValue, inputPlaceholder, clea
 };
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    marginTop: 30,
+    gap: 10,
+  },
+  pickerCancelContainer: {
+    backgroundColor: '#bbb',
+    borderRadius: 4,
+  },
   formTextInput: {
     borderWidth: 1,
     borderRadius: 6,
@@ -67,6 +79,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   clearPickerPressable: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#ffd6e1',
     borderRadius: 8,
     paddingVertical: 2,

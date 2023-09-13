@@ -1,16 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
-import {
-  getExercisesList
-} from '../services/query/queries';
+import { getExercisesList } from '../services/query/queries';
 import { getAllExercisesArrayFromPages } from '../helpers/exercisesHelpers';
 import FullScreenSpinnerCentered from '../components/list/FullScreenSpinnerCentered';
 import ListTouchableItem from '../components/list/ListTouchableItem';
@@ -34,7 +27,7 @@ const SearchResultsScreen: React.FC<ScreenProps> = ({ navigation, route }) => {
     [
       'exercisesList',
       {
-        ...route.params
+        ...route.params,
       },
     ],
     getExercisesList,
@@ -58,7 +51,9 @@ const SearchResultsScreen: React.FC<ScreenProps> = ({ navigation, route }) => {
   const renderListItem = (item: ExerciseItem) => {
     return (
       <ListTouchableItem
-        onPress={() => navigation.navigate('ExerciseDetails', { exercise: item })}
+        onPress={() =>
+          navigation.navigate('ExerciseDetails', { exercise: item })
+        }
         exerciseItem={item}
       />
     );
