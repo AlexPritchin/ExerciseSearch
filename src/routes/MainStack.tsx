@@ -4,12 +4,22 @@ import { MainStackParamList } from './types';
 
 import SearchFormScreen from '../screens/SearchFormScreen';
 import SearchResultsScreen from '../screens/SearchResultsScreen';
+import ExerciseDetailsScreen from '../screens/ExerciseDetailsScreen';
 
 const Stack = createNativeStackNavigator<MainStackParamList>();
 
 const MainStack: React.FC = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: 'aliceblue',
+        },
+        headerTitleStyle: {
+          fontSize: 24,
+        },
+        headerBackTitleVisible: false,
+      }}>
       <Stack.Screen
         name="MainForm"
         component={SearchFormScreen}
@@ -19,14 +29,14 @@ const MainStack: React.FC = () => {
         name="SearchResults"
         component={SearchResultsScreen}
         options={{
-          headerStyle: {
-            backgroundColor: 'aliceblue',
-          },
-          headerTitleStyle: {
-            fontSize: 24,
-          },
-          headerBackTitleVisible: false,
           headerTitle: 'Search Results',
+        }}
+      />
+      <Stack.Screen
+        name="ExerciseDetails"
+        component={ExerciseDetailsScreen}
+        options={{
+          headerTitle: 'Exercise details',
         }}
       />
     </Stack.Navigator>

@@ -10,10 +10,15 @@ const getAllExercisesArrayFromPages = (exercisesPages?: ExerciseListPage[]) => {
 
 const getParamForRequest = (label?: string) => {
   return label?.toLowerCase().split(' ').join('_');
-} 
+};
+
+const getSplittedInstructions = (instructions?: string) => {
+  return instructions?.split(/\s(?=\w+:)/).join('\n\n');
+};
 
 export {
   getExerciseListItems,
   getAllExercisesArrayFromPages,
   getParamForRequest,
+  getSplittedInstructions,
 };

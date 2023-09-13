@@ -58,6 +58,7 @@ const SearchResultsScreen: React.FC<ScreenProps> = ({ navigation, route }) => {
   const renderListItem = (item: ExerciseItem) => {
     return (
       <ListTouchableItem
+        onPress={() => navigation.navigate('ExerciseDetails', { exercise: item })}
         exerciseItem={item}
       />
     );

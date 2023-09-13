@@ -1,3 +1,5 @@
+import { ExerciseItem } from "../types/searchTypes";
+
 export type MainStackParamList = {
   MainForm: undefined;
   SearchResults: {
@@ -5,5 +7,6 @@ export type MainStackParamList = {
     muscle?: string;
     difficulty?: string;
     name?: string;
-  }
+  };
+  ExerciseDetails: { exercise: ExerciseItem };
 };
