@@ -1,7 +1,9 @@
 import { ExerciseItem, ExerciseListPage } from '../types/searchTypes';
 
 const getExerciseListItems = (data: any): ExerciseItem[] => {
-  return (data as Array<any>).map<ExerciseItem>((dataItem) => dataItem as ExerciseItem);
+  return (data as Array<any>).map<ExerciseItem>(
+    (dataItem) => dataItem as ExerciseItem
+  );
 };
 
 const getAllExercisesArrayFromPages = (exercisesPages?: ExerciseListPage[]) => {

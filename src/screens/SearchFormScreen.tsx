@@ -17,7 +17,11 @@ import FormSubmitButton from '../components/form/FormSubmitButton';
 
 import { MainStackParamList } from '../routes/types';
 import { SearchPickerItem } from '../types/searchTypes';
-import { difficultyPickerData, musclePickerData, typePickerData } from '../resources/pickerData';
+import {
+  difficultyPickerData,
+  musclePickerData,
+  typePickerData,
+} from '../resources/pickerData';
 
 type ScreenProps = NativeStackScreenProps<MainStackParamList, 'MainForm'>;
 
@@ -29,7 +33,6 @@ interface SearchFormValues {
 }
 
 const SearchFormScreen: React.FC<ScreenProps> = ({ navigation }) => {
-
   const initialValues: SearchFormValues = {
     type: {},
     muscle: {},
@@ -39,11 +42,16 @@ const SearchFormScreen: React.FC<ScreenProps> = ({ navigation }) => {
 
   const formValidate = (values: SearchFormValues) => {
     const errors: any = {};
-  
-    if (!values.type.label && !values.muscle.label && !values.difficulty.label && !values.name) {
+
+    if (
+      !values.type.label &&
+      !values.muscle.label &&
+      !values.difficulty.label &&
+      !values.name
+    ) {
       errors.type = 'At least one field should be not empty';
     }
-  
+
     return errors;
   };
 
@@ -64,7 +72,7 @@ const SearchFormScreen: React.FC<ScreenProps> = ({ navigation }) => {
               muscle: getParamForRequest(values.muscle.label),
               difficulty: getParamForRequest(values.difficulty.label),
               name: values.name,
-            })
+            });
           }}>
           {({
             handleChange,
@@ -79,36 +87,36 @@ const SearchFormScreen: React.FC<ScreenProps> = ({ navigation }) => {
                 <FormModalSelector
                   data={typePickerData}
                   onChange={(option) => {
-                    if (typeof(option) === 'object')
+                    if (typeof option === 'object')
                       setFieldValue('type', { ...option });
                   }}
                   selectedKey={values.type.key}
                   inputValue={values.type.label}
-                  inputPlaceholder='Exercise type'
+                  inputPlaceholder="Exercise type"
                   clearOnPress={() => setFieldValue('type', {})}
                 />
 
                 <FormModalSelector
                   data={musclePickerData}
                   onChange={(option) => {
-                    if (typeof(option) === 'object')
+                    if (typeof option === 'object')
                       setFieldValue('muscle', { ...option });
                   }}
                   selectedKey={values.muscle.key}
                   inputValue={values.muscle.label}
-                  inputPlaceholder='Exercise muscle'
+                  inputPlaceholder="Exercise muscle"
                   clearOnPress={() => setFieldValue('muscle', {})}
                 />
 
                 <FormModalSelector
                   data={difficultyPickerData}
                   onChange={(option) => {
-                    if (typeof(option) === 'object')
+                    if (typeof option === 'object')
                       setFieldValue('difficulty', { ...option });
                   }}
                   selectedKey={values.difficulty.key}
                   inputValue={values.difficulty.label}
-                  inputPlaceholder='Exercise difficulty'
+                  inputPlaceholder="Exercise difficulty"
                   clearOnPress={() => setFieldValue('difficulty', {})}
                 />
 
@@ -117,13 +125,7 @@ const SearchFormScreen: React.FC<ScreenProps> = ({ navigation }) => {
                   onBlur={handleBlur('name')}
                   value={values.name}
                   placeholder="Exercise name"
-                  style={[
-                    styles.formTextInput,
-                    {
-                      borderColor: 'lightslategrey',
-                      marginTop: 30,
-                    },
-                  ]}
+                  style={styles.formTextInput}
                 />
 
                 <FormSubmitButton
@@ -164,6 +166,8 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingLeft: 10,
     paddingHorizontal: 10,
+    borderColor: 'lightslategrey',
+    marginTop: 30,
   },
 });
 

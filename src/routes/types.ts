@@ -1,4 +1,4 @@
-import { ExerciseItem } from "../types/searchTypes";
+import { ExerciseItem } from '../types/searchTypes';
 
 export type MainStackParamList = {
   MainForm: undefined;

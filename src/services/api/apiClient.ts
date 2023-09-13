@@ -14,13 +14,16 @@ api.interceptors.response.use(
   },
   function (error) {
     if (!error.status && error.message === 'Network Error') {
-      Alert.alert('Network error', 'Server is unavailable now. Please try again later.');
+      Alert.alert(
+        'Network error',
+        'Server is unavailable now. Please try again later.'
+      );
     } else {
       Alert.alert('Error', 'Something went wrong');
     }
 
     return Promise.reject(error);
-  },
+  }
 );
 
 export default api;
