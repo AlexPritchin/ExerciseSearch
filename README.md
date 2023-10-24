@@ -4,7 +4,7 @@ Simple React Native app for searching for physical exercises in an open web data
 
 ## Description
 
-Test task for a position of React Native developer at IvorySoft.
+Test task for a position of React Native developer.
 
 ## Additional info
 
