@@ -4,7 +4,8 @@ import { Alert } from 'react-native';
 const api = axios.create({
   baseURL: 'https://api.api-ninjas.com/v1/',
   headers: {
-    'X-Api-Key': '59fBcOh0ZttSaD4qNFpXcA==lFgzi8SpU6V3wJts',
+    // Paste your API Ninjas API key here
+    'X-Api-Key': '',
   },
 });
 
